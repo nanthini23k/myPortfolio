@@ -1220,7 +1220,7 @@ function Projects() {
 
                     >
 
-                      Coming Soon
+                      In Progress
 
                     </Typography>
 
