@@ -33,14 +33,14 @@ function Projects() {
     {
       image: '/myWebsite.png',
       name: 'My Portfolio',
-      live: '#',
-      github: '#',
+      live: 'https://nanthini-portfolio.vercel.app/',
+      github: 'https://github.com/nanthini23k/myPortfolio',
       available: true
     },
 
     {
       image: null,
-      name: 'Coming Soon',
+      name: 'Work in Progress',
       live: '#',
       github: '#',
       available: false
@@ -48,7 +48,7 @@ function Projects() {
 
     {
       image: null,
-      name: 'Coming Soon',
+      name: 'Work in Progress',
       live: '#',
       github: '#',
       available: false
