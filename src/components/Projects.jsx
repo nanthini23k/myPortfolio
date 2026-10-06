@@ -39,11 +39,11 @@ function Projects() {
     },
 
     {
-      image: null,
-      name: 'Work in Progress',
+      image: '/candlesite.png',
+      name: 'Candle product showcase Website',
       live: '#',
       github: '#',
-      available: false
+      available: true
     },
 
     {
