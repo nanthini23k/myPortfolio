@@ -40,9 +40,9 @@ function Projects() {
 
     {
       image: '/candlesite.png',
-      name: 'Candle product showcase Website',
-      live: '#',
-      github: '#',
+      name: 'Candle Shop Website',
+      live: 'https://candle-website-mu.vercel.app/',
+      github: 'https://github.com/nanthini23k/Candle-Website',
       available: true
     },
 
