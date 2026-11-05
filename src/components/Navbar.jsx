@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -19,6 +18,19 @@ function Navbar() {
   const [open, setOpen] = useState(false)
 
   const menuButtonRef = useRef(null)
+
+  // Blur whatever is focused before the drawer opens, so aria-hidden
+  // on #root never lands on a focused element.
+  const openDrawer = (e) => {
+    e.currentTarget.blur()
+    setOpen(true)
+  }
+
+  // Blur the focused element inside the drawer before it gets hidden.
+  const closeDrawer = () => {
+    document.activeElement?.blur()
+    setOpen(false)
+  }
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -234,7 +246,7 @@ function Navbar() {
           aria-label="Open navigation menu"
           aria-expanded={open}
           aria-controls="mobile-navigation-drawer"
-          onClick={() => setOpen(true)}
+          onClick={openDrawer}
           sx={{
             color: "#C084FC",
             background: "rgba(192,132,252,0.08)",
@@ -256,12 +268,10 @@ function Navbar() {
       <Drawer
         anchor="right"
         open={open}
-        onClose={() => setOpen(false)}
-        ModalProps={{
-          keepMounted: true,
-          onTransitionExited: () => {
-            menuButtonRef.current?.focus()
-          },
+        onClose={closeDrawer}
+        ModalProps={{ keepMounted: true }}
+        SlideProps={{
+          onExited: () => menuButtonRef.current?.focus(),
         }}
         PaperProps={{
           id: "mobile-navigation-drawer",
@@ -307,7 +317,7 @@ function Navbar() {
 
           <IconButton
             aria-label="Close navigation menu"
-            onClick={() => setOpen(false)}
+            onClick={closeDrawer}
             sx={{
               color: "#C084FC",
               "&:hover": {
@@ -337,7 +347,7 @@ function Navbar() {
               <ListItemButton
                 component={Link}
                 to={item.path}
-                onClick={() => setOpen(false)}
+                onClick={closeDrawer}
                 sx={{
                   borderRadius: "14px",
                   color:
@@ -383,7 +393,7 @@ function Navbar() {
             <ListItemButton
               component={Link}
               to="/Contact"
-              onClick={() => setOpen(false)}
+              onClick={closeDrawer}
               sx={{
                 borderRadius: "14px",
                 color: "white",
